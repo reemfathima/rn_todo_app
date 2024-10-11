@@ -9,7 +9,7 @@ const BottomTabs = createBottomTabNavigator<BottomTabParamList>();
 
 const BottomTabNavigator = () => {
   return (
-    <BottomTabs.Navigator>
+    <BottomTabs.Navigator screenOptions={{headerShown: false}}>
       <BottomTabs.Screen name="Home" component={HomeScreen} />
       <BottomTabs.Screen name="AddTask" component={AddTaskScreen} />
       <BottomTabs.Screen name="Settings" component={SettingsScreen} />

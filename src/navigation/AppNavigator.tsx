@@ -1,7 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import RootNavigator from './RootNavigator';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React, {useEffect, useState} from 'react';
+import LoginScreen from '../screens/LoginScreen';
+import OnboardingScreen from '../screens/OnboardingScreen';
+import SignupScreen from '../screens/SignupScreen';
+import BottomTabNavigator from './BottomTabNavigator';
+import {RootStackParamList} from './types';
+
+const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
@@ -18,11 +25,15 @@ const AppNavigator = () => {
   if (isLoggedIn === null) {
     return null; // Optionally, show a loading spinner here
   }
-
   return (
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    <RootStack.Navigator
+      initialRouteName={isLoggedIn ? 'BottomTabs' : 'Login'}
+      screenOptions={{headerShown: false}}>
+      <RootStack.Screen name="Onboarding" component={OnboardingScreen} />
+      <RootStack.Screen name="Login" component={LoginScreen} />
+      <RootStack.Screen name="Signup" component={SignupScreen} />
+      <RootStack.Screen name="BottomTabs" component={BottomTabNavigator} />
+    </RootStack.Navigator>
   );
 };
 

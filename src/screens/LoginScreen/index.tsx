@@ -58,7 +58,7 @@ const LoginScreen: React.FC<Props> = ({navigation, loginAsync}) => {
           rules={{required: 'Email is required'}}
           render={({field: {onChange, value}}) => (
             <IconTextInput
-              icon="mail-outline"
+              icon="email-outline"
               label="Email"
               error={errors.email?.message}
               value={value}

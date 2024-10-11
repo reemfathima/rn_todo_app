@@ -61,7 +61,7 @@ const SignupScreen: React.FC<Props> = ({navigation, signup}) => {
           rules={{required: 'Name is required'}}
           render={({field: {onChange, value}}) => (
             <IconTextInput
-              icon="person-outline"
+              icon="account-outline"
               label="Name"
               error={errors.name?.message}
               value={value}
@@ -82,7 +82,7 @@ const SignupScreen: React.FC<Props> = ({navigation, signup}) => {
           }}
           render={({field: {onChange, value}}) => (
             <IconTextInput
-              icon="mail-outline"
+              icon="email-outline"
               label="Email"
               error={errors.email?.message}
               value={value}
@@ -124,7 +124,7 @@ const SignupScreen: React.FC<Props> = ({navigation, signup}) => {
           }}
           render={({field: {onChange, value}}) => (
             <IconTextInput
-              icon="lock-reset"
+              icon="lock-check-outline"
               label="Confirm Password"
               error={errors.confirmPass?.message}
               value={value}

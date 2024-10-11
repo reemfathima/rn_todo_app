@@ -1,5 +1,6 @@
 import {createModel} from '@rematch/core';
 import {RootModel} from '.';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface UserState {
   isLoggedIn: boolean;
@@ -42,6 +43,7 @@ export const user = createModel<RootModel>()({
 
       const userInfo = {name: 'JohnDoe', email: payload.email};
       dispatch.user.addUser(userInfo);
+      await AsyncStorage.setItem('userToken', 'user');
 
       return {status: 'success'};
     },
